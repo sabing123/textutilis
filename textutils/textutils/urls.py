@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
-#url lerning
+# url lerning
 # urlpatterns = [
 #     path('admin/', admin.site.urls),
 #     path('', views.index, name='index'),
@@ -29,13 +29,6 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    # path('removepunc/', views.removepunc, name='removepun'),
-    # path('capitalizefirst/', views.capfirst, name='capfirst'),
-    # path('newlineremove/', views.newlineremove, name='newlineremove'),
-    # path('spaceremove/', views.spaceremove, name='spaceremove'),
-    # path('charcount/', views.charcount, name='charcount'),
     path('analyze', views.analyze, name='analyze'),
-    # path('navbar',views.navbar, name='navigationbar')
-
 
 ]
