@@ -9,13 +9,13 @@ def index(request):
 
 def analyze(request):
     # get the text
-    djtext = (request.GET.get('text', 'default'))
+    djtext = (request.POST.get('text', 'default'))
 
-    removepunc = (request.GET.get('removepunc', 'off'))
-    fullcaps = (request.GET.get('fullcaps', 'off'))
-    newlineremover = (request.GET.get('newlineremover', 'off'))
-    extraspaceremover = (request.GET.get('extraspaceremover', 'off'))
-    charcount = (request.GET.get('charcount', 'off'))
+    removepunc = (request.POST.get('removepunc', 'off'))
+    fullcaps = (request.POST.get('fullcaps', 'off'))
+    newlineremover = (request.POST.get('newlineremover', 'off'))
+    extraspaceremover = (request.POST.get('extraspaceremover', 'off'))
+    charcount = (request.POST.get('charcount', 'off'))
 
     if (removepunc == "on"):
         punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
@@ -36,7 +36,7 @@ def analyze(request):
     elif (newlineremover == "on"):
         analyzed = ""
         for char in djtext:
-            if char != "/n":
+            if char != "\n" and char != "\r":
                 analyzed = analyzed + char
         params = {'purpose': 'Remove new lines', 'analyzed_text': analyzed}
         return render(request, 'analyze.html', params)
@@ -57,18 +57,3 @@ def analyze(request):
     else:
         return HttpResponse("Error")
 
-#
-# def capfirst(request):
-#     return HttpResponse("capfirst")
-#
-#
-# def newlineremove(request):
-#     return HttpResponse("New line remove")
-#
-#
-# def spaceremove(request):
-#     return HttpResponse("Space Remove")
-#
-#
-# def charcount(request):
-#     return HttpResponse("character Count")
