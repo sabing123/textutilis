@@ -25,7 +25,7 @@ def analyze(request):
                 analyzed = analyzed + char
         params = {'purpose': 'Removed Punctuation', 'analyzed_text': analyzed}
         return render(request, 'analyze.html', params)
-
+# aaaa
     elif (fullcaps == "on"):
         analyzed = ""
         for char in djtext:
